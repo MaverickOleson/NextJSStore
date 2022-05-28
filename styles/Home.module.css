@@ -194,6 +194,7 @@
 	flex-direction: row;
 	justify-content: space-evenly;
 	gap: 0.5rem;
+	cursor: pointer;
 }
 
 .item {
@@ -208,6 +209,19 @@
 	max-width: 350px;
 	aspect-ratio: 1/1;
 	object-fit: contain;
+}
+
+.message {
+	padding: 1rem 1rem;
+	position: fixed;
+	right: 50%;
+	top: 0;
+	transform: translateX(50%);
+	background: white;
+	color: black;
+	border: 2px solid black;
+	cursor: pointer;
+	z-index: 1;
 }
 
 @media (max-width: 660px) {

@@ -99,12 +99,12 @@ app.post("/cartAdd", async (req, res, next) => {
 			const user = await userModel.findOne({ username });
 			user.cart.set(req.body.item, user.cart.get(req.body.item) + 1 || 1);
 			await userModel.findOneAndUpdate({ username }, user);
-			return next();
+			return res.json({ message: "Added to cart" });
 		} catch {
-			return res.redirect("/login");
+			return res.json({ message: "Login to add to cart" });
 		}
 	}
-	res.redirect("/login");
+	res.json({ message: "Login to add to cart" });
 });
 
 app.post("/cartRemove", async (req, res, next) => {
@@ -121,12 +121,12 @@ app.post("/cartRemove", async (req, res, next) => {
 				user.cart.delete(req.body.item);
 			}
 			await userModel.findOneAndUpdate({ username }, user);
-			return next();
+			return res.json({ message: "Removed from cart" });
 		} catch {
-			return res.redirect("/login");
+			return res.json({ message: "Login to remove from cart" });
 		}
 	}
-	res.redirect("/login");
+	res.json({ message: "Login to remove from cart" });
 });
 
 app.get("/", async (req, res, next) => {
